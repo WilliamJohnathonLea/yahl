@@ -14,7 +14,20 @@ object Main extends App:
       override val code = 200
       override val body = s"hello, you sent: ${req.body}"
 
-  val exampleHandledRoute = examplePath handledBy exampleHandler
+  val f1: Request => Either[Response, Request] = Right(_)
+  val f2: Request => Either[Response, Request] = Right(_)
+  val f3: Request => Either[Response, Request] =
+    req =>
+      for
+        x <- f1(req)
+        y <- f2(x)
+      yield y
+
+  val exampleHandledRoute =
+    examplePath
+      .handledBy(exampleHandler)
+      .usingFilter(f3)
+
   val exampleUnhandledRoute = (examplePath / "test").unhandled
 
   val exampleRequst: Request = new Request:
