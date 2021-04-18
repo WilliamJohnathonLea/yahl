@@ -14,5 +14,6 @@ object Route:
 
   final case class Handled(
     path: Path,
+    filter: Request => Either[Response, Request],
     handler: Request => Response
   ) extends Route

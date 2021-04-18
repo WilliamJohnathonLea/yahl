@@ -24,6 +24,9 @@ class Router(routes: List[Route]):
   def apply(req: Request): Response =
     routeMap(req.uri.path) match
       case Route.Unhandled(p) => unhandledResponse(p)
-      case Route.Handled(_, handler) => handler(req)
+      case Route.Handled(_, filter, handler) =>
+        filter(req) match
+          case Left(response) => response
+          case Right(r) => handler(r)
 
 end Router

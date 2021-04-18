@@ -5,6 +5,7 @@ This is an academic exercise to build an HTTP DSL using Scala 3.
 ## Features
 - DSL for creating HTTP routes.
 - Synchronous Request/Reponse handling (for now)
+- Request filtering
 - more coming...
 
 ## Build a `Path`

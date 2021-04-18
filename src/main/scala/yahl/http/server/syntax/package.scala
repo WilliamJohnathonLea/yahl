@@ -16,7 +16,7 @@ package object syntax:
       route ~ other
 
     def handledBy(handler: Request => Response): Route =
-      Route.Handled(path, handler)
+      Route.Handled(path, Right(_), handler)
 
     def unhandled: Route = Route.Unhandled(path)
 
