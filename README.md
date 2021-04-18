@@ -5,21 +5,22 @@ This is an academic exercise to build an HTTP DSL using Scala 3.
 ## Features
 - DSL for creating HTTP routes.
 - Synchronous Request/Reponse handling (for now)
+- more coming...
 
 ## Build a `Path`
 ```scala
-import http.Path
-import http.syntax._
+import yahl.http.Path
+import yahl.http.syntax._
 
 val myPath: Path = "hello" / "world"
 ```
 
 ## Build a `Route`
 ```scala
-import http._
-import http.syntax._
-import http.server._
-import http.server.syntax._
+import yahl.http._
+import yahl.http.syntax._
+import yahl.http.server._
+import yahl.http.server.syntax._
 
 val myHandler = (req: Request) =>
   new Response:
@@ -32,10 +33,10 @@ val myRoute: Route =
 
 ## Build a `Router`
 ```scala
-import http._
-import http.syntax._
-import http.server._
-import http.server.syntax._
+import yahl.http._
+import yahl.http.syntax._
+import yahl.http.server._
+import yahl.http.server.syntax._
 
 val myHandler = (req: Request) =>
   new Response:
